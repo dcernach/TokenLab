@@ -72,6 +72,9 @@
               <selectionForeground color="-16777216"/>
               <toolTipText value="Double click to edit token."/>
             </properties>
+            <clientProperties>
+              <List.isFileList class="java.lang.Boolean" value="false"/>
+            </clientProperties>
           </component>
         </children>
       </scrollpane>

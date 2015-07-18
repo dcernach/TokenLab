@@ -1,7 +1,7 @@
 package net.sozinsoft.tokenlab;
 
-import net.sozinsoft.tokenlab.d20_dtd.*;
-import net.sozinsoft.tokenlab.d20_dtd.Character;
+import net.sozinsoft.tokenlab.dtd.*;
+import net.sozinsoft.tokenlab.dtd.Character;
 
 import javax.xml.bind.JAXBException;
 import java.io.File;
@@ -16,7 +16,7 @@ import java.util.List;
  */
 public class HeroLabD20Digester extends HeroLabDigester {
 
-    private List<net.sozinsoft.tokenlab.d20_dtd.Character> characters;
+    private List<net.sozinsoft.tokenlab.dtd.Character> characters;
 
     public List<Character> getCharacters() {
         return characters;
@@ -24,7 +24,7 @@ public class HeroLabD20Digester extends HeroLabDigester {
 
 
     public void parse(File xmlFile ) throws JAXBException {
-         Document c = (Document)this.parse( xmlFile, net.sozinsoft.tokenlab.d20_dtd.Document.class );
+         Document c = (Document)this.parse( xmlFile, net.sozinsoft.tokenlab.dtd.Document.class );
          characters = c.getPublic().getCharacter();
     }
 

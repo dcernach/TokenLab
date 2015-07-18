@@ -2,13 +2,13 @@ package net.sozinsoft.tokenlab;
 
 
 import net.rptools.maptool.model.Token;
-import net.sozinsoft.tokenlab.d20_dtd.Character;
+import net.sozinsoft.tokenlab.dtd.Character;
 
 import java.util.HashMap;
 
 public class D20Token implements ITokenizable, ICharacter {
     public static final String D_20 = "d20";
-    private net.sozinsoft.tokenlab.d20_dtd.Character _character;
+    private net.sozinsoft.tokenlab.dtd.Character _character;
     private TokenLabToken _token;
     private HashMap<String, Object> _properties = new HashMap<String, Object>();
 

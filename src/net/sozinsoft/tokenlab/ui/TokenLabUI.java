@@ -22,55 +22,65 @@ import java.util.prefs.Preferences;
 
 public class TokenLabUI {
     public static final String HEROLABS_XML_DIR = "HEROLABS_XML_DIR";
+
     JButton importButton;
+
     JToolBar toolbar;
+
     JList herolabsCharacterList;
+
     JButton exportAllButton;
+
     JButton exportSelectedButton;
-    JFileChooser herolabsXMLChooser ;
+
+    JFileChooser herolabsXMLChooser;
+
     boolean contextMenuEnabled;
 
     JPanel panel;
+
     private JButton configurePortfolioButton;
+
     Config config;
+
     Preferences prefs;
 
+
     public static void main(String[] args) {
-            javax.swing.SwingUtilities.invokeLater(new Runnable() {
-                public void run() {
-                    createAndShowGUI();
-                }
-            });
+        javax.swing.SwingUtilities.invokeLater(new Runnable() {
+            public void run() {
+                createAndShowGUI();
+            }
+        });
     }
 
 
-    private static void createAndShowGUI()  {
+    private static void createAndShowGUI() {
 
         JFrame frame = null;
         try {
             TokenLabUI ui = new TokenLabUI();
-            frame = new ExitFrame( ui.config );
-            Dimension preferredSize = new Dimension( 320, 500 );
-            frame.setPreferredSize( preferredSize );
+            frame = new ExitFrame(ui.config);
+            Dimension preferredSize = new Dimension(320, 500);
+            frame.setPreferredSize(preferredSize);
             ui.setDefaults();
             frame.setContentPane(ui.panel);
             frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
             frame.pack();
             frame.setVisible(true);
-        } catch ( Exception e ) {
+        } catch (Exception e) {
             JOptionPane.showMessageDialog(frame,
-            "Something bad happened! \n" + e.toString(),
-            "Fatal error",
-            JOptionPane.ERROR_MESSAGE);
+                    "Something bad happened! \n" + e.toString(),
+                    "Fatal error",
+                    JOptionPane.ERROR_MESSAGE);
         }
     }
 
 
-
     public void setDefaults() throws IOException {
 
-        herolabsXMLChooser = new JFileChooser( prefs.get( HEROLABS_XML_DIR, "" ) );
+        herolabsXMLChooser = new JFileChooser(prefs.get(HEROLABS_XML_DIR, ""));
 
 
         importButton.setEnabled(true);
@@ -80,18 +90,18 @@ public class TokenLabUI {
 
         setXMLChooserFileFilter(herolabsXMLChooser);
 
-        IconListRenderer listRenderer = new IconListRenderer( config, this );
+        IconListRenderer listRenderer = new IconListRenderer(config, this);
         herolabsCharacterList.setCellRenderer(listRenderer);
     }
 
 
-
-    private void setXMLChooserFileFilter( JFileChooser chooser  ) {
+    private void setXMLChooserFileFilter(JFileChooser chooser) {
         chooser.setFileFilter(new FileFilter() {
             @Override
             public boolean accept(File f) {
                 return f.isDirectory() || f.getName().endsWith("xml");
             }
+
 
             @Override
             public String getDescription() {
@@ -103,7 +113,7 @@ public class TokenLabUI {
 
     public TokenLabUI() throws IOException {
         prefs = Preferences.userNodeForPackage(this.getClass());
-        config = new Config( prefs );
+        config = new Config(prefs);
 
         importButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
@@ -116,7 +126,7 @@ public class TokenLabUI {
 
                     File xmlFile = herolabsXMLChooser.getSelectedFile();
 
-                    if ( ! xmlFile.exists() ) {
+                    if (!xmlFile.exists()) {
                         errorDialog("File not found", "File " + xmlFile + " does not exists, please select accept valid file\",");
                         return;
                     }
@@ -174,9 +184,11 @@ public class TokenLabUI {
                 }
             }
 
+
             public void mouseReleased(MouseEvent mouseEvent) {
                 showContextMenu(herolabsCharacterList, mouseEvent);
             }
+
 
             public void mousePressed(MouseEvent mouseEvent) {
                 showContextMenu(herolabsCharacterList, mouseEvent);
@@ -212,6 +224,7 @@ public class TokenLabUI {
         });
     }
 
+
     private void showContextMenu(JList characterList, MouseEvent mouseEvent) {
         // TODO: handle right-click outside of selected range correctly (should treat as single selection, but not deselect)
         boolean multipleSelected = herolabsCharacterList.getSelectedValues().length > 1;
@@ -240,14 +253,13 @@ public class TokenLabUI {
                 });
                 menu.add(menuItem);
 
-                menuItem = new JMenuItem("Export character" + (multipleSelected ? "s" : "") );
+                menuItem = new JMenuItem("Export character" + (multipleSelected ? "s" : ""));
                 menuItem.addActionListener(new ActionListener() {
                     public void actionPerformed(ActionEvent actionEvent) {
                         exportSelectedCharacters();
                     }
                 });
                 menu.add(menuItem);
-
 
 
                 menuItem = new JMenuItem("Clear configuration" + (multipleSelected ? "s" : ""));
@@ -262,6 +274,7 @@ public class TokenLabUI {
             }
         }
     }
+
 
     private void resetToDefaultsForSelectedCharacters() {
         int confirmation = JOptionPane.showConfirmDialog(
@@ -280,6 +293,7 @@ public class TokenLabUI {
         herolabsCharacterList.repaint();
     }
 
+
     private void clearConfigForSelectedCharacters() {
         int confirmation = JOptionPane.showConfirmDialog(
                 panel,
@@ -290,7 +304,7 @@ public class TokenLabUI {
 
         if (confirmation == JOptionPane.YES_OPTION) {
             for (Object character : herolabsCharacterList.getSelectedValues()) {
-                config.remove(((Character)character).getName());
+                config.remove(((Character) character).getName());
             }
         }
 
@@ -299,7 +313,7 @@ public class TokenLabUI {
 
 
     private void exportSelectedCharacters() {
-        if (herolabsCharacterList.getSelectedIndex() >= 0 ) {
+        if (herolabsCharacterList.getSelectedIndex() >= 0) {
             Character c = (Character) herolabsCharacterList.getModel().getElementAt(herolabsCharacterList.getSelectedIndex());
             Config.ConfigEntry ce = config.get(c.getName());
             if (ce != null && ce.isOk()) {
@@ -311,6 +325,7 @@ public class TokenLabUI {
         }
     }
 
+
     private void configureSelectedCharacters() {
         //get the selected item
         for (Config.ConfigEntry entry : getSelectedCharacters()) {
@@ -320,9 +335,10 @@ public class TokenLabUI {
         }
     }
 
+
     private Collection<Config.ConfigEntry> getSelectedCharacters() {
         final Collection<Config.ConfigEntry> entries = new ArrayList<Config.ConfigEntry>();
-        
+
         Object[] selectedValues = herolabsCharacterList.getSelectedValues();
         for (Object object : selectedValues) {
             entries.add(config.getOrCreate(((Character) object).getName()));
@@ -331,6 +347,7 @@ public class TokenLabUI {
         return entries;
     }
 
+
     private void defaultNonOverriddenConfigurations() {
         ListModel model = herolabsCharacterList.getModel();
         for (int i = 0; i < model.getSize(); i++) {
@@ -338,64 +355,74 @@ public class TokenLabUI {
         }
     }
 
+
     private void errorDialog(String title, String error) {
         JOptionPane.showMessageDialog(panel, error, title, JOptionPane.ERROR_MESSAGE);
     }
 
+
     private void exportCharacters() {
-        Object [] selectedValues = herolabsCharacterList.getSelectedValues();
+        Object[] selectedValues = herolabsCharacterList.getSelectedValues();
         HeroLabPathfinderDigester dig = new HeroLabPathfinderDigester();
         boolean success = true;
         ArrayList<Character> notExported = new ArrayList<Character>();
-        
-        for ( Object object : selectedValues ) {
+
+        for (Object object : selectedValues) {
             Character character = (Character) object;
             try {
-                if (!dig.saveCharacter(config, character) ) {
+                if (!dig.saveCharacter(config, character)) {
                     notExported.add(character);
                 }
             } catch (IOException io) {
                 success = false;
-                errorDialog( io.getMessage(), "Something bad happened:" + io.toString() );
+                errorDialog(io.getMessage(), "Something bad happened:" + io.toString());
 
             } catch (SAXException saxe) {
                 success = false;
-                errorDialog( saxe.getMessage(), "Something bad happened:" + saxe.toString() );
-            }
-            catch (Exception e ) {
+                errorDialog(saxe.getMessage(), "Something bad happened:" + saxe.toString());
+            } catch (Exception e) {
                 success = false;
-                errorDialog( e.getMessage(), "Something bad happened:" + e.toString() );
+                errorDialog(e.getMessage(), "Something bad happened:" + e.toString());
             }
         }
-        
-        if ( success ) {
+
+        if (success) {
             String message = "Successfully exported " + (selectedValues.length - notExported.size()) + " out of " + selectedValues.length + " Maptools token(s).";
             if (!notExported.isEmpty()) {
                 message += "  " + notExported.size() + " tokens were not exported as they are not fully configured.";
                 // TODO: do something more useful with this collection
             }
-                    
+
             JOptionPane.showMessageDialog(panel, message);
         }
     }
-    
+
+
     public class IconListRenderer extends DefaultListCellRenderer {
 
         public static final String NOTOK = "notok";
+
         public static final String OK = "ok";
-        public static final String CHECK_ICON = "res/check.png" ;
+
+        public static final String CHECK_ICON = "res/check.png";
+
         public static final String X_ICON = "res/button_play_red.png";
+
         private Map<Object, Icon> icons = null;
+
         private Config config;
+
         TokenLabUI ui;
 
-        public IconListRenderer( Config config, TokenLabUI ui ) throws IOException {
+
+        public IconListRenderer(Config config, TokenLabUI ui) throws IOException {
             this.ui = ui;
             this.config = config;
             icons = new HashMap<Object, Icon>();
             icons.put(OK, IconCreator.createImageIcon(CHECK_ICON, OK));
             icons.put(NOTOK, IconCreator.createImageIcon(X_ICON, NOTOK));
         }
+
 
         @Override
         public Component getListCellRendererComponent(
@@ -409,19 +436,18 @@ public class TokenLabUI {
                             value, index, isSelected, cellHasFocus);
 
             // Get icon to use for the list item value
-            Character character = (Character)value;
-            Config.ConfigEntry ce = config.get( character.getName());
+            Character character = (Character) value;
+            Config.ConfigEntry ce = config.get(character.getName());
             Icon icon = null;
 
-            if ( ce == null ) {
+            if (ce == null) {
                 icon = icons.get(NOTOK);
-                label.setToolTipText( "Double-click to enter configuration information for this character, right-click for more options");
+                label.setToolTipText("Double-click to enter configuration information for this character, right-click for more options");
             } else {
-                if ( ce.isOk() ) {
+                if (ce.isOk()) {
                     icon = icons.get(OK);
                     ui.exportAllButton.setEnabled(true);
-                }
-                else {
+                } else {
                     icon = icons.get(NOTOK);
                 }
             }

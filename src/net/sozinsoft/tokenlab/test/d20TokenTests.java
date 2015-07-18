@@ -3,7 +3,7 @@ package net.sozinsoft.tokenlab.test;
 import net.sozinsoft.tokenlab.Config;
 import net.sozinsoft.tokenlab.D20Token;
 import net.sozinsoft.tokenlab.HeroLabD20Digester;
-import net.sozinsoft.tokenlab.d20_dtd.Character;
+import net.sozinsoft.tokenlab.dtd.Character;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -25,7 +25,8 @@ public class d20TokenTests {
     @Before
     public void setUp() throws JAXBException {
         dig = new HeroLabD20Digester();
-        dig.parse(new File("src/net/sozinsoft/tokenlab/test/xml/d20Portfolio.xml"));
+        //dig.parse(new File("src/net/sozinsoft/tokenlab/test/xml/d20Portfolio.xml"));
+        dig.parse(new File("src/net/sozinsoft/tokenlab/test/xml/sample.xml"));
     }
 
     /**

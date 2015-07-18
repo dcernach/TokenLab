@@ -1557,7 +1557,7 @@ Normal: When using a weapon with which you are not proficient, you are at -4 to 
                     <cost text="12500 GP" value="12500"></cost>
                     <description>This well-made tome is always of small size, typically no more than 12 inches tall, 8 inches wide, and 1 inch thick. All such books are durable, waterproof, bound with iron overlaid with silver, and locked.
 
-A wizard can fill the 1,000 pages of a blessed book with spells without paying the 100 gp per page material cost. This book is never found as randomly generated treasure with spells already inscribed in it.
+A wizard can fill the 1,000 pages of a blessed book with spells without paying the 100 gp per page material cost. This book is never found as randomly net.sozinsoft.tokenlab.dtd treasure with spells already inscribed in it.
 
 Moderate transmutation; CL 7th; Craft Wondrous Item, secret page; Price 12,500 gp; Weight 1 lb.</description>
                 </item>

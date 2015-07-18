@@ -1,3 +1,10 @@
+//
+// This file was net.sozinsoft.tokenlab.dtd by the JavaTM Architecture for XML Binding(JAXB) Reference Implementation, v2.2.8-b130911.1802
+// See <a href="http://java.sun.com/xml/jaxb">http://java.sun.com/xml/jaxb</a> 
+// Any modifications to this file will be lost upon recompilation of the source schema. 
+// Generated on: 2015.07.17 at 11:31:03 PM BRT 
+//
+
 
 package net.sozinsoft.tokenlab.dtd;
 
@@ -13,226 +20,217 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
 
 /**
- * 
+ *
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = {
-    "description",
-    "charheight",
-    "charweight"
+        "description",
+        "charheight",
+        "charweight"
 })
 @XmlRootElement(name = "personal")
 public class Personal {
 
-    @XmlAttribute
+    @XmlAttribute(name = "age")
     @XmlJavaTypeAdapter(NormalizedStringAdapter.class)
     protected String age;
-    @XmlAttribute
+
+    @XmlAttribute(name = "eyes")
     @XmlJavaTypeAdapter(NormalizedStringAdapter.class)
     protected String eyes;
-    @XmlAttribute
+
+    @XmlAttribute(name = "gender")
     @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
     protected String gender;
-    @XmlAttribute
+
+    @XmlAttribute(name = "hair")
     @XmlJavaTypeAdapter(NormalizedStringAdapter.class)
     protected String hair;
-    @XmlAttribute
+
+    @XmlAttribute(name = "skin")
     @XmlJavaTypeAdapter(NormalizedStringAdapter.class)
     protected String skin;
+
     @XmlElement(required = true)
     protected String description;
+
     @XmlElement(required = true)
     protected Charheight charheight;
+
     @XmlElement(required = true)
     protected Charweight charweight;
 
+
     /**
      * Gets the value of the age property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
+     *
+     * @return possible object is
+     * {@link String }
      */
     public String getAge() {
         return age;
     }
 
+
     /**
      * Sets the value of the age property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
+     *
+     * @param value allowed object is
+     *              {@link String }
      */
     public void setAge(String value) {
         this.age = value;
     }
 
+
     /**
      * Gets the value of the eyes property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
+     *
+     * @return possible object is
+     * {@link String }
      */
     public String getEyes() {
         return eyes;
     }
 
+
     /**
      * Sets the value of the eyes property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
+     *
+     * @param value allowed object is
+     *              {@link String }
      */
     public void setEyes(String value) {
         this.eyes = value;
     }
 
+
     /**
      * Gets the value of the gender property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
+     *
+     * @return possible object is
+     * {@link String }
      */
     public String getGender() {
         return gender;
     }
 
+
     /**
      * Sets the value of the gender property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
+     *
+     * @param value allowed object is
+     *              {@link String }
      */
     public void setGender(String value) {
         this.gender = value;
     }
 
+
     /**
      * Gets the value of the hair property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
+     *
+     * @return possible object is
+     * {@link String }
      */
     public String getHair() {
         return hair;
     }
 
+
     /**
      * Sets the value of the hair property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
+     *
+     * @param value allowed object is
+     *              {@link String }
      */
     public void setHair(String value) {
         this.hair = value;
     }
 
+
     /**
      * Gets the value of the skin property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
+     *
+     * @return possible object is
+     * {@link String }
      */
     public String getSkin() {
         return skin;
     }
 
+
     /**
      * Sets the value of the skin property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
+     *
+     * @param value allowed object is
+     *              {@link String }
      */
     public void setSkin(String value) {
         this.skin = value;
     }
 
+
     /**
      * Gets the value of the description property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
+     *
+     * @return possible object is
+     * {@link String }
      */
     public String getDescription() {
         return description;
     }
 
+
     /**
      * Sets the value of the description property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
+     *
+     * @param value allowed object is
+     *              {@link String }
      */
     public void setDescription(String value) {
         this.description = value;
     }
 
+
     /**
      * Gets the value of the charheight property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link Charheight }
-     *     
+     *
+     * @return possible object is
+     * {@link Charheight }
      */
     public Charheight getCharheight() {
         return charheight;
     }
 
+
     /**
      * Sets the value of the charheight property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link Charheight }
-     *     
+     *
+     * @param value allowed object is
+     *              {@link Charheight }
      */
     public void setCharheight(Charheight value) {
         this.charheight = value;
     }
 
+
     /**
      * Gets the value of the charweight property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link Charweight }
-     *     
+     *
+     * @return possible object is
+     * {@link Charweight }
      */
     public Charweight getCharweight() {
         return charweight;
     }
 
+
     /**
      * Sets the value of the charweight property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link Charweight }
-     *     
+     *
+     * @param value allowed object is
+     *              {@link Charweight }
      */
     public void setCharweight(Charweight value) {
         this.charweight = value;

@@ -1,3 +1,10 @@
+//
+// This file was net.sozinsoft.tokenlab.dtd by the JavaTM Architecture for XML Binding(JAXB) Reference Implementation, v2.2.8-b130911.1802
+// See <a href="http://java.sun.com/xml/jaxb">http://java.sun.com/xml/jaxb</a> 
+// Any modifications to this file will be lost upon recompilation of the source schema. 
+// Generated on: 2015.07.17 at 11:31:03 PM BRT 
+//
+
 
 package net.sozinsoft.tokenlab.dtd;
 
@@ -9,145 +16,139 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * 
+ *
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = {
-    "description",
-    "basics",
-    "tactics",
-    "ecology",
-    "additional"
+        "description",
+        "basics",
+        "tactics",
+        "ecology",
+        "additional"
 })
 @XmlRootElement(name = "npc")
 public class Npc {
 
     @XmlElement(required = true)
     protected String description;
+
     @XmlElement(required = true)
     protected Basics basics;
+
     @XmlElement(required = true)
     protected Tactics tactics;
+
     @XmlElement(required = true)
     protected Ecology ecology;
+
     @XmlElement(required = true)
     protected Additional additional;
 
+
     /**
      * Gets the value of the description property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
+     *
+     * @return possible object is
+     * {@link String }
      */
     public String getDescription() {
         return description;
     }
 
+
     /**
      * Sets the value of the description property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
+     *
+     * @param value allowed object is
+     *              {@link String }
      */
     public void setDescription(String value) {
         this.description = value;
     }
 
+
     /**
      * Gets the value of the basics property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link Basics }
-     *     
+     *
+     * @return possible object is
+     * {@link Basics }
      */
     public Basics getBasics() {
         return basics;
     }
 
+
     /**
      * Sets the value of the basics property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link Basics }
-     *     
+     *
+     * @param value allowed object is
+     *              {@link Basics }
      */
     public void setBasics(Basics value) {
         this.basics = value;
     }
 
+
     /**
      * Gets the value of the tactics property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link Tactics }
-     *     
+     *
+     * @return possible object is
+     * {@link Tactics }
      */
     public Tactics getTactics() {
         return tactics;
     }
 
+
     /**
      * Sets the value of the tactics property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link Tactics }
-     *     
+     *
+     * @param value allowed object is
+     *              {@link Tactics }
      */
     public void setTactics(Tactics value) {
         this.tactics = value;
     }
 
+
     /**
      * Gets the value of the ecology property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link Ecology }
-     *     
+     *
+     * @return possible object is
+     * {@link Ecology }
      */
     public Ecology getEcology() {
         return ecology;
     }
 
+
     /**
      * Sets the value of the ecology property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link Ecology }
-     *     
+     *
+     * @param value allowed object is
+     *              {@link Ecology }
      */
     public void setEcology(Ecology value) {
         this.ecology = value;
     }
 
+
     /**
      * Gets the value of the additional property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link Additional }
-     *     
+     *
+     * @return possible object is
+     * {@link Additional }
      */
     public Additional getAdditional() {
         return additional;
     }
 
+
     /**
      * Sets the value of the additional property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link Additional }
-     *     
+     *
+     * @param value allowed object is
+     *              {@link Additional }
      */
     public void setAdditional(Additional value) {
         this.additional = value;
